@@ -1,6 +1,6 @@
 # First practical work in Formal Languages and Broadcasts
 
-### [![Build Status](https://travis-ci.org/2ToThe10th/FirstPracticalWorkFormalLanguagesAndBroadcasts.svg?branch=dev)](https://travis-ci.org/2ToThe10th/FirstPracticalWorkFormalLanguagesAndBroadcasts)
+### [![Build Status](https://travis-ci.com/2ToThe10th/FirstPracticalWorkFormalLanguagesAndBroadcasts.svg?token=3S6xWbBvu4EyXfDwhGsF&branch=master)](https://travis-ci.com/2ToThe10th/FirstPracticalWorkFormalLanguagesAndBroadcasts)
 
 Для того чтобы запустить тесты,
 воспользуйтесь командами:
