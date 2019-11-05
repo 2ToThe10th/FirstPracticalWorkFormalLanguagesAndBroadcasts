@@ -58,3 +58,11 @@ TEST(Hard, Second) {
   ClassForTest test("ab.cb.ac.++*", "bbcabcb");
   EXPECT_EQ(test.Do(), 5);
 }
+TEST(Example, First) {
+  ClassForTest test("ab+c.aba.*.bac.+.+*", "babc");
+  EXPECT_EQ(test.Do(), 2);
+}
+TEST(Example, Second) {
+  ClassForTest test("acb..bab.c. * .ab.ba. + . + *a.", "cbaa");
+  EXPECT_EQ(test.Do(), 4);
+}
