@@ -13,7 +13,8 @@ private:
 
   unsigned int dfs(unsigned int vertex, std::string &pattern,
                    unsigned int position,
-                   std::vector< std::vector<int> > &previous_answer);
+                   std::vector< std::vector<int> > &previous_answer,
+                   std::vector<std::vector<bool>> &used);
 
   struct Node {
     std::vector<unsigned int> epsilon;

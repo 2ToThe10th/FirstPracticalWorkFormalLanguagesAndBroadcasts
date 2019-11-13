@@ -58,6 +58,38 @@ TEST(Hard, Second) {
   ClassForTest test("ab.cb.ac.++*", "bbcabcb");
   EXPECT_EQ(test.Do(), 5);
 }
+TEST(Hard, Third) {
+  ClassForTest test("ba***.", "bbbaaaaaaa");
+  EXPECT_EQ(test.Do(), 8);
+}
+TEST(Hard, Fourth) {
+  ClassForTest test("ccba+***..", "bbbaaaaaaaccc");
+  EXPECT_EQ(test.Do(), 2);
+}
+TEST(Hard, Fifth) {
+  ClassForTest test("ccab+ba+***...", "bbbaaaaaaaccc");
+  EXPECT_EQ(test.Do(), 0);
+}
+TEST(Hard, Sixth) {
+  ClassForTest test("ab.*bb.***.", "abababababb");
+  EXPECT_EQ(test.Do(), 2);
+}
+TEST(Hard, Seventh) {
+  ClassForTest test("ab.***bb.**.", "ababaabababbbbb");
+  EXPECT_EQ(test.Do(), 10);
+}
+TEST(Hard, Eighth) {
+  ClassForTest test("aa.aa..***b.**", "aaababaaaab");
+  EXPECT_EQ(test.Do(), 7);
+}
+TEST(Hard, Nineth) {
+  ClassForTest test("c*ab+1+.a.b.a.c.", "accccccabac");
+  EXPECT_EQ(test.Do(), 10);
+}
+TEST(Hard, Tenth) {
+  ClassForTest test("11.1.1.1.***", "accccccabac");
+  EXPECT_EQ(test.Do(), 0);
+}
 TEST(Example, First) {
   ClassForTest test("ab+c.aba.*.bac.+.+*", "babc");
   EXPECT_EQ(test.Do(), 2);

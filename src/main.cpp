@@ -15,7 +15,7 @@ int main() {
   std::string language;
   std::cin >> language;
 
-  auto finite_state_machine = new FiniteStateMachine(language);
+  auto* finite_state_machine = new FiniteStateMachine(language);
   finite_state_machine->Invert();
 
   std::string pattern;

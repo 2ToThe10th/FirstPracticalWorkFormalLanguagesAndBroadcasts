@@ -101,18 +101,23 @@ FiniteStateMachine::FiniteStateMachine(std::string &language) {
 unsigned int
 FiniteStateMachine::dfs(unsigned int vertex, std::string &pattern,
                         unsigned int position,
-                        std::vector<std::vector<int>> &previous_answer) {
+                        std::vector<std::vector<int>> &previous_answer,
+                        std::vector<std::vector<bool>> &used) {
   if (position == pattern.size()) {
     return position;
   }
   if (previous_answer[vertex][position] >= 0) {
     return previous_answer[vertex][position];
   }
+  used[vertex][position] = true;
+
   unsigned int return_value = position;
 
   for (auto to : states[vertex].epsilon) {
-    return_value =
-        std::max(return_value, dfs(to, pattern, position, previous_answer));
+    if (!used[to][position]) {
+      return_value =
+          std::max(return_value, dfs(to, pattern, position, previous_answer, used));
+    }
   }
 
   std::vector<unsigned int> *child = nullptr;
@@ -129,17 +134,20 @@ FiniteStateMachine::dfs(unsigned int vertex, std::string &pattern,
 
   for (auto to : *child) {
     return_value =
-        std::max(return_value, dfs(to, pattern, position + 1, previous_answer));
+        std::max(return_value, dfs(to, pattern, position + 1, previous_answer, used));
   }
 
   previous_answer[vertex][position] = return_value;
+  used[vertex][position] = false;
   return return_value;
 }
 
 unsigned int FiniteStateMachine::FindAnswer(std::string &pattern) {
   std::vector<std::vector<int>> previous_answer(
       states.size(), std::vector<int>(pattern.size(), -1));
-  return dfs(start_node, pattern, 0, previous_answer);
+  std::vector<std::vector<bool>> used(
+      states.size(), std::vector<bool>(pattern.size(),false));
+  return dfs(start_node, pattern, 0, previous_answer, used);
 }
 void FiniteStateMachine::Invert() {
   std::vector<Node> old_states;
