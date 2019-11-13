@@ -90,6 +90,18 @@ TEST(Hard, Tenth) {
   ClassForTest test("11.1.1.1.***", "accccccabac");
   EXPECT_EQ(test.Do(), 0);
 }
+TEST(Hard, 11th) {
+  ClassForTest test("ac1.1.1.1.1.***.", "accccccabacccc");
+  EXPECT_EQ(test.Do(), 5);
+}
+TEST(Hard, 12th) {
+  ClassForTest test("b1.a1.c1...1.", "accccccababac");
+  EXPECT_EQ(test.Do(), 3);
+}
+TEST(Hard, 13th) {
+  ClassForTest test("b1.a1.c1...1.", "ac");
+  EXPECT_EQ(test.Do(), 2);
+}
 TEST(Example, First) {
   ClassForTest test("ab+c.aba.*.bac.+.+*", "babc");
   EXPECT_EQ(test.Do(), 2);
